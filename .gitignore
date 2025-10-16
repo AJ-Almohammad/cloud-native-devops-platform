@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+
+# AWS Credentials
+.aws/credentials
+aws_config.json
+
+# Ansible
+ansible.cfg
+retry-files/
+
+# Kubernetes
+kubeconfig
+*kubeconfig*
+**/*kubeconfig*
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
