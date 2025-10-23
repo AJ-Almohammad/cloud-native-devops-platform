@@ -1,0 +1,23 @@
+---
+# Common role default variables
+
+# Deployment user configuration
+deploy_user: deploy
+deploy_user_ssh_key: "ssh-rsa AAAAB3NzaC1yc2E...== deploy@multi-everything-devops"
+
+# System configuration
+timezone: "Europe/Berlin"
+
+# Essential packages to install
+essential_packages:
+  - curl
+  - wget
+  - vim
+  - htop
+  - git
+  - unzip
+  - tree
+  - jq
+
+# Security configuration
+enable_automatic_updates: true

@@ -1,0 +1,41 @@
+---
+- name: Update and upgrade system packages
+  apt:
+    upgrade: true
+    update_cache: true
+  when: ansible_os_family == "Debian"
+
+- name: Install essential packages
+  package:
+    name:
+      - curl
+      - wget
+      - vim
+      - htop
+      - git
+      - unzip
+      - tree
+    state: present
+
+- name: Create deployment user
+  user:
+    name: deploy
+    groups: sudo
+    append: true
+    shell: /bin/bash
+
+- name: Add SSH key for deploy user
+  authorized_key:
+    user: deploy
+    state: present
+    key: "{{ deploy_user_ssh_key }}"
+
+- name: Configure timezone
+  timezone:
+    name: Europe/Berlin
+
+- name: Enable automatic security updates
+  apt:
+    name: unattended-upgrades
+    state: present
+  when: ansible_os_family == "Debian"

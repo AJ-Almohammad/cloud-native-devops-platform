@@ -1,0 +1,39 @@
+---
+- name: Test Local macOS Setup
+  hosts: localhost
+  connection: local
+  
+  tasks:
+    - name: Detect operating system
+      debug:
+        msg: "Detected OS: {{ ansible_os_family }} - {{ ansible_distribution }} {{ ansible_distribution_version }}"
+        
+    - name: Check if Docker is installed
+      command: which docker
+      register: docker_check
+      ignore_errors: true
+      changed_when: false
+      
+    - name: Display Docker status
+      debug:
+        msg: "Docker installed: {{ docker_check.rc == 0 }}"
+        
+    - name: Check if kubectl is installed
+      command: which kubectl
+      register: kubectl_check
+      ignore_errors: true
+      changed_when: false
+        
+    - name: Display kubectl status
+      debug:
+        msg: "kubectl installed: {{ kubectl_check.rc == 0 }}"
+        
+    - name: Check Kubernetes cluster connection
+      command: kubectl cluster-info
+      register: k8s_cluster
+      ignore_errors: true
+      changed_when: false
+      
+    - name: Display Kubernetes cluster status
+      debug:
+        msg: "Kubernetes cluster: {{ k8s_cluster.stdout_lines[0] if k8s_cluster.rc == 0 else 'Not connected' }}"

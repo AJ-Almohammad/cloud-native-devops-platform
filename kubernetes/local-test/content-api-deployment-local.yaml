@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: content-api
+  namespace: microservices
+  labels:
+    app: content-api
+    version: v1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: content-api
+  template:
+    metadata:
+      labels:
+        app: content-api
+        version: v1
+    spec:
+      containers:
+      - name: content-api
+        image: content-api:local
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+        env:
+        - name: APP_ENV
+          value: "production"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"

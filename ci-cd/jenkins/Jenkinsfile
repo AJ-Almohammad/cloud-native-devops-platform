@@ -1,0 +1,116 @@
+pipeline {
+    agent any
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+    }
+    environment {
+        REGISTRY = "ghcr.io"
+        IMAGE_PREFIX = "multi-everything-devops"
+        KUBE_NAMESPACE = "multi-everything"
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Security Scan') {
+            steps {
+                script {
+                    sh 'trivy filesystem . --exit-code 1 --no-progress'
+                }
+            }
+        }
+        
+        stage('Build Docker Images') {
+            parallel {
+                stage('Build Content API') {
+                    steps {
+                        sh 'docker build -t $REGISTRY/$IMAGE_PREFIX/content-api:latest ./services/content-api'
+                    }
+                }
+                stage('Build User Service') {
+                    steps {
+                        sh 'docker build -t $REGISTRY/$IMAGE_PREFIX/user-service:latest ./services/user-service'
+                    }
+                }
+                stage('Build Analytics Service') {
+                    steps {
+                        sh 'docker build -t $REGISTRY/$IMAGE_PREFIX/analytics-service:latest ./services/analytics-service'
+                    }
+                }
+            }
+        }
+        
+        stage('Push Images') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'github-container-registry', usernameVariable: 'USERNAME', passwordVariable: 'TOKEN')]) {
+                        sh '''
+                            docker login $REGISTRY -u $USERNAME -p $TOKEN
+                            docker push $REGISTRY/$IMAGE_PREFIX/content-api:latest
+                            docker push $REGISTRY/$IMAGE_PREFIX/user-service:latest
+                            docker push $REGISTRY/$IMAGE_PREFIX/analytics-service:latest
+                            docker push $REGISTRY/$IMAGE_PREFIX/notification-service:latest
+                            docker push $REGISTRY/$IMAGE_PREFIX/cron-scheduler:latest
+                        '''
+                    }
+                }
+            }
+        }
+        
+        stage('Deploy to Kubernetes') {
+            steps {
+                script {
+                    withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
+                        sh '''
+                            kubectl apply -f kubernetes/namespace.yaml
+                            kubectl apply -f kubernetes/secrets.yaml
+                            kubectl apply -f kubernetes/applications/
+                            kubectl apply -f kubernetes/monitoring/
+                            
+                            # Wait for rollout to complete
+                            kubectl rollout status deployment/content-api -n $KUBE_NAMESPACE --timeout=300s
+                            kubectl rollout status deployment/user-service -n $KUBE_NAMESPACE --timeout=300s
+                            kubectl rollout status deployment/analytics-service -n $KUBE_NAMESPACE --timeout=300s
+                        '''
+                    }
+                }
+            }
+        }
+        
+        stage('Smoke Tests') {
+            steps {
+                script {
+                    sh '''
+                        # Test service health endpoints
+                        curl -f http://content-api-service/health || exit 1
+                        curl -f http://user-service:8000/health || exit 1
+                        curl -f http://analytics-service:3000/health || exit 1
+                    '''
+                }
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs()
+        }
+        success {
+            emailext (
+                subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                body: "The pipeline completed successfully.",
+                to: "devops-team@multi-everything.com"
+            )
+        }
+        failure {
+            emailext (
+                subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                body: "The pipeline failed. Please check the logs.",
+                to: "devops-team@multi-everything.com"
+            )
+        }
+    }
+}

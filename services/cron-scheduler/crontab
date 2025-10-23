@@ -1,0 +1,13 @@
+# Cron jobs for Multi-Everything DevOps Platform
+# Format: minute hour day month day_of_week command
+
+# Backup database every day at 3 AM
+0 3 * * * /usr/local/bin/python /app/backup_task.py >> /var/log/cron.log 2>&1
+
+# Cleanup temporary files every Sunday at 4 AM
+0 4 * * 0 /usr/local/bin/python /app/cleanup_task.py >> /var/log/cron.log 2>&1 
+
+# Log rotation every day at 5 AM
+0 5 * * * /usr/local/bin/python /app/log_rotation.py >> /var/log/cron.log 2>&1 
+
+# Don't remove the empty line at the end of this file

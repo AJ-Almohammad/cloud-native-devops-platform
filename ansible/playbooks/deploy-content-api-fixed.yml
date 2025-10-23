@@ -1,0 +1,37 @@
+---
+- name: Deploy Content API to Rancher Desktop
+  hosts: localhost
+  connection: local
+  vars:
+    ns: "microservices"
+    service_name: "content-api"
+    
+  tasks:
+    - name: Verify Kubernetes connection
+      command: kubectl get nodes
+      register: k8s_connection
+      changed_when: false
+      
+    - name: Display connection status
+      debug:
+        msg: "Kubernetes connection: {{ 'OK' if k8s_connection.rc == 0 else 'FAILED' }}"
+        
+    - name: Check if Content API deployment file exists
+      stat:
+        path: ../../kubernetes/applications/content-api-deployment.yaml
+      register: deployment_file
+      
+    - name: Display file status
+      debug:
+        msg: "Deployment file exists: {{ deployment_file.stat.exists }}"
+        
+    - name: Preview deployment file
+      command: head -20 ../../kubernetes/applications/content-api-deployment.yaml
+      register: file_preview
+      when: deployment_file.stat.exists
+      changed_when: false
+      
+    - name: Display file preview
+      debug:
+        msg: "File preview: {{ file_preview.stdout_lines }}"
+      when: deployment_file.stat.exists

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Everything DevOps - Service Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h2 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .service-tech {
+            display: inline-block;
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .service-links {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-link:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+
+        .service-achievement {
+            background: #f7fafc;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .service-achievement p {
+            color: #2d3748;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            background: #48bb78;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        .status-badge::before {
+            content: '✓';
+            margin-right: 5px;
+        }
+
+        .file-structure {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .file-path {
+            color: #68d391;
+        }
+
+        .file-item {
+            margin-left: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            opacity: 0.8;
+        }
+
+        .video-demo {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .video-btn {
+            background: #ed8936;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .video-btn:hover {
+            background: #dd7724;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Multi-Everything DevOps Platform</h1>
+            <div class="subtitle">
+                Enterprise-grade microservices architecture deployed on AWS EKS with full CI/CD pipeline, 
+                monitoring stack, and serverless functions.
+            </div>
+            
+            <div class="navigation">
+                <button class="nav-btn" onclick="showAllServices()">All Services</button>
+                <button class="nav-btn" onclick="showInfrastructure()">Infrastructure</button>
+                <button class="nav-btn" onclick="showMonitoring()">Monitoring</button>
+                <button class="nav-btn" onclick="showCICD()">CI/CD Pipeline</button>
+            </div>
+
+            <div class="video-demo">
+                <button class="video-btn" onclick="showVideoDemo()">
+                    🎥 Watch Service Demo Video
+                </button>
+            </div>
+        </div>
+
+        <div class="services-grid" id="services-container">
+            <!-- Content API Card -->
+            <div class="service-card">
+                <div class="service-icon">📝</div>
+                <h2>Content API Service</h2>
+                <span class="service-tech">PHP 8.2 • Slim Framework • RESTful API</span>
+                <p class="service-description">
+                    High-performance content management API serving structured data with pagination, 
+                    filtering, and real-time content delivery.
+                </p>
+                
+                <div class="service-links">
+                    <a href="services/content-api/Dockerfile" class="service-link" target="_blank">🐳 Dockerfile</a>
+                    <a href="services/content-api/" class="service-link" target="_blank">📁 Source Code</a>
+                    <a href="kubernetes/applications/content-api-deployment.yaml" class="service-link" target="_blank">⚙️ K8s Manifest</a>
+                    <a href="monitoring/microservices-demo.mp4" class="service-link" target="_blank">🎥 Demo Video</a>
+                </div>
+
+                <div class="file-structure">
+                    <div class="file-path">services/content-api/</div>
+                    <div class="file-item">📄 Dockerfile</div>
+                    <div class="file-item">📁 app/ (ContentController.php)</div>
+                    <div class="file-item">📁 routes/ (api.php, web.php)</div>
+                    <div class="file-item">📄 composer.json</div>
+                </div>
+
+                <div class="service-achievement">
+                    <p><strong>✅ My Achievement:</strong> I created this PHP microservice using Slim Framework, designed the RESTful API architecture, and deployed it to AWS EKS with comprehensive endpoint validation and Load Balancer configuration.</p>
+                </div>
+                <div class="status-badge">Production Ready</div>
+            </div>
+
+            <!-- User Service Card -->
+            <div class="service-card">
+                <div class="service-icon">👥</div>
+                <h2>User Management Service</h2>
+                <span class="service-tech">Python • FastAPI • JWT Authentication</span>
+                <p class="service-description">
+                    Secure user authentication and management system with role-based access control 
+                    and real-time session management.
+                </p>
+                
+                <div class="service-links">
+                    <a href="services/user-service/Dockerfile" class="service-link" target="_blank">🐳 Dockerfile</a>
+                    <a href="services/user-service/main.py" class="service-link" target="_blank">📁 Source Code</a>
+                    <a href="kubernetes/applications/user-service-deployment.yaml" class="service-link" target="_blank">⚙️ K8s Manifest</a>
+                    <a href="terraform/02-compute/" class="service-link" target="_blank">🏗️ Terraform</a>
+                </div>
+
+                <div class="file-structure">
+                    <div class="file-path">services/user-service/</div>
+                    <div class="file-item">📄 Dockerfile</div>
+                    <div class="file-item">📄 main.py (FastAPI Application)</div>
+                    <div class="file-item">📄 requirements.txt</div>
+                </div>
+
+                <div class="service-achievement">
+                    <p><strong>✅ My Achievement:</strong> I built this Python FastAPI service with JWT authentication, designed the user management system, and deployed it to AWS EKS with automated health checks and service discovery configuration.</p>
+                </div>
+                <div class="status-badge">Production Ready</div>
+            </div>
+
+            <!-- Analytics Service Card -->
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h2>Analytics Service</h2>
+                <span class="service-tech">Node.js • Express • Real-time Processing</span>
+                <p class="service-description">
+                    Real-time data aggregation and analytics processing with customizable dashboards 
+                    and performance metrics.
+                </p>
+                
+                <div class="service-links">
+                    <a href="services/analytics-service/Dockerfile" class="service-link" target="_blank">🐳 Dockerfile</a>
+                    <a href="services/analytics-service/server.js" class="service-link" target="_blank">📁 Source Code</a>
+                    <a href="kubernetes/applications/analytics-service-deployment.yaml" class="service-link" target="_blank">⚙️ K8s Manifest</a>
+                    <a href="ansible/playbooks/" class="service-link" target="_blank">🔄 Ansible</a>
+                </div>
+
+                <div class="file-structure">
+                    <div class="file-path">services/analytics-service/</div>
+                    <div class="file-item">📄 Dockerfile</div>
+                    <div class="file-item">📄 server.js (Express Application)</div>
+                    <div class="file-item">📄 package.json</div>
+                </div>
+
+                <div class="service-achievement">
+                    <p><strong>✅ My Achievement:</strong> I developed this Node.js analytics service with real-time data processing, designed the metrics collection system, and deployed it to AWS EKS with multi-replica scaling and performance optimization.</p>
+                </div>
+                <div class="status-badge">Production Ready</div>
+            </div>
+
+            <!-- Notification Service Card -->
+            <div class="service-card">
+                <div class="service-icon">🔔</div>
+                <h2>Notification Service</h2>
+                <span class="service-tech">Go • Gin Framework • WebSocket</span>
+                <p class="service-description">
+                    High-throughput notification delivery system supporting email, SMS, and push 
+                    notifications with delivery tracking.
+                </p>
+                
+                <div class="service-links">
+                    <a href="services/notification-service/Dockerfile" class="service-link" target="_blank">🐳 Dockerfile</a>
+                    <a href="services/notification-service/main.go" class="service-link" target="_blank">📁 Source Code</a>
+                    <a href="kubernetes/applications/notification-service-deployment.yaml" class="service-link" target="_blank">⚙️ K8s Manifest</a>
+                    <a href="ci-cd/jenkins/Jenkinsfile" class="service-link" target="_blank">⚙️ Jenkinsfile</a>
+                </div>
+
+                <div class="file-structure">
+                    <div class="file-path">services/notification-service/</div>
+                    <div class="file-item">📄 Dockerfile</div>
+                    <div class="file-item">📄 main.go (Gin Application)</div>
+                    <div class="file-item">📄 go.mod</div>
+                    <div class="file-item">📄 go.sum</div>
+                </div>
+
+                <div class="service-achievement">
+                    <p><strong>✅ My Achievement:</strong> I created this Go microservice using Gin framework, designed the high-throughput notification system, and deployed it to AWS EKS with concurrent connection stress testing and optimized resource allocation.</p>
+                </div>
+                <div class="status-badge">Production Ready</div>
+            </div>
+
+            <!-- Cron Scheduler Card -->
+            <div class="service-card">
+                <div class="service-icon">⏰</div>
+                <h2>Cron Scheduler Service</h2>
+                <span class="service-tech">Python • Cron Jobs • Background Processing</span>
+                <p class="service-description">
+                    Distributed task scheduling system for automated report generation, data cleanup, 
+                    and scheduled business processes.
+                </p>
+                
+                <div class="service-links">
+                    <a href="services/cron-scheduler/Dockerfile" class="service-link" target="_blank">🐳 Dockerfile</a>
+                    <a href="services/cron-scheduler/scheduler.py" class="service-link" target="_blank">📁 Source Code</a>
+                    <a href="kubernetes/applications/cron-scheduler-deployment.yaml" class="service-link" target="_blank">⚙️ K8s Manifest</a>
+                    <a href="ansible/playbooks/" class="service-link" target="_blank">🔄 Ansible</a>
+                </div>
+
+                <div class="file-structure">
+                    <div class="file-path">services/cron-scheduler/</div>
+                    <div class="file-item">📄 Dockerfile</div>
+                    <div class="file-item">📄 scheduler.py (Main Application)</div>
+                    <div class="file-item">📄 crontab (Job Configuration)</div>
+                    <div class="file-item">📄 requirements.txt</div>
+                </div>
+
+                <div class="service-achievement">
+                    <p><strong>✅ My Achievement:</strong> I built this Python cron scheduler service, designed the distributed task scheduling architecture, and deployed it to AWS EKS with proper cron configuration and job execution monitoring.</p>
+                </div>
+                <div class="status-badge">Production Ready</div>
+            </div>
+
+            <!-- Infrastructure Card -->
+            <div class="service-card">
+                <div class="service-icon">🏗️</div>
+                <h2>AWS Infrastructure</h2>
+                <span class="service-tech">Terraform • EKS • RDS • Lambda • VPC</span>
+                <p class="service-description">
+                    Complete cloud infrastructure with Kubernetes orchestration, managed databases, 
+                    serverless functions, and secure networking.
+                </p>
+                
+                <div class="service-links">
+                    <a href="terraform/main.tf" class="service-link" target="_blank">🏗️ Terraform</a>
+                    <a href="kubernetes/" class="service-link" target="_blank">⚙️ K8s Manifests</a>
+                    <a href="ansible/" class="service-link" target="_blank">🔄 Ansible</a>
+                    <a href="ci-cd/" class="service-link" target="_blank">⚙️ CI/CD</a>
+                </div>
+
+                <div class="file-structure">
+                    <div class="file-path">terraform/</div>
+                    <div class="file-item">📄 main.tf (EKS Cluster)</div>
+                    <div class="file-item">📁 01-network/ (VPC, Subnets)</div>
+                    <div class="file-item">📁 02-compute/ (EKS Configuration)</div>
+                    <div class="file-item">📁 03-data/ (RDS Database)</div>
+                    <div class="file-item">📁 04-serverless/ (Lambda Functions)</div>
+                </div>
+
+                <div class="service-achievement">
+                    <p><strong>✅ My Achievement:</strong> I created this complete AWS infrastructure using Terraform, designed the multi-layer architecture with EKS, RDS, and Lambda, and deployed it with full automation and monitoring capabilities.</p>
+                </div>
+                <div class="status-badge">Infrastructure as Code</div>
+            </div>
+
+            <!-- Monitoring Card -->
+            <div class="service-card">
+                <div class="service-icon">📈</div>
+                <h2>Monitoring & Observability</h2>
+                <span class="service-tech">Prometheus • Grafana • Loki • Dashboard</span>
+                <p class="service-description">
+                    Comprehensive monitoring stack with real-time metrics, log aggregation, 
+                    and customizable dashboards for all services.
+                </p>
+                
+                <div class="service-links">
+                    <a href="monitoring/dashboard-with-proxy.html" class="service-link" target="_blank">📊 Live Dashboard</a>
+                    <a href="kubernetes/monitoring/" class="service-link" target="_blank">⚙️ K8s Monitoring</a>
+                    <a href="monitoring/microservices-demo.mp4" class="service-link" target="_blank">🎥 Demo Video</a>
+                    <a href="docs/dashboards/" class="service-link" target="_blank">📋 Documentation</a>
+                </div>
+
+                <div class="file-structure">
+                    <div class="file-path">monitoring/</div>
+                    <div class="file-item">📄 dashboard-with-proxy.html</div>
+                    <div class="file-item">📄 microservices-demo.mp4</div>
+                    <div class="file-item">📄 proxy-server.js</div>
+                </div>
+
+                <div class="service-achievement">
+                    <p><strong>✅ My Achievement:</strong> I designed and implemented this comprehensive monitoring stack with Prometheus and Grafana, created real-time dashboards, and deployed the observability platform to track all microservices performance.</p>
+                </div>
+                <div class="status-badge">Active Monitoring</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Multi-Everything DevOps Platform • Built with Modern Cloud Native Technologies</p>
+            <p>✅ 5 Microservices • ✅ AWS EKS • ✅ Terraform • ✅ CI/CD • ✅ Monitoring</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">
+                Project Structure: <strong>services/</strong> • <strong>terraform/</strong> • <strong>kubernetes/</strong> • <strong>ansible/</strong> • <strong>ci-cd/</strong> • <strong>monitoring/</strong>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function showAllServices() {
+            alert('Showing all 5 microservices with their respective project files and deployment configurations.');
+        }
+
+        function showInfrastructure() {
+            alert('Displaying AWS infrastructure components: EKS Cluster, Load Balancers, VPC, RDS, and networking configuration.');
+        }
+
+        function showMonitoring() {
+            alert('Opening monitoring dashboard with service health metrics, logs, and performance analytics.');
+            window.open('monitoring/dashboard-with-proxy.html', '_blank');
+        }
+
+        function showCICD() {
+            alert('Displaying CI/CD pipeline configuration with Jenkins, Ansible, and deployment workflows.');
+            window.open('ci-cd/', '_blank');
+        }
+
+        function showVideoDemo() {
+            alert('Opening service demonstration video showing all microservices running in production.');
+            window.open('monitoring/microservices-demo.mp4', '_blank');
+        }
+
+        // Add click handlers for file links to show actual paths
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.service-link');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    console.log('Navigating to:', this.getAttribute('href'));
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -28,3 +28,65 @@ logs/
 # IDE
 .vscode/
 .idea/
+
+# ========== CRITICAL ADDITIONS ==========
+
+# Docker image tarballs (YOUR LARGE FILES)
+*.tar
+*.tar.gz
+**/content-api*.tar
+
+# Environment files with secrets
+.env
+.env.local
+.env.production
+.env.development
+
+# SSL/SSH keys and certificates
+*.key
+*.pem
+*.crt
+*.csr
+
+# Node.js dependencies (CRITICAL - VERY LARGE)
+node_modules/
+**/node_modules/
+
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.env/
+venv/
+ENV/
+
+# Lambda deployment packages
+*.zip
+**/lambda.zip
+
+# Backup files
+*.bak
+*.backup
+
+# Temporary files
+*.tmp
+*.temp
+
+# ========== PROJECT SPECIFIC ==========
+
+# Content API storage (PHP/Laravel)
+**/storage/
+
+# Ansible specific
+**/*.retry
+
+# Terraform error states
+**/errored.tfstate
+
+# Local development status files
+local-setup-status.txt
+
+# Build artifacts
+**/build/
+**/dist/
+**/target/

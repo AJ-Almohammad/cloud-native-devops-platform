@@ -1,0 +1,35 @@
+---
+- name: Deploy Test Service to Rancher Desktop
+  hosts: localhost
+  connection: local
+  vars:
+    namespace: "microservices"
+    
+  tasks:
+    - name: Verify Kubernetes cluster is accessible
+      command: kubectl get nodes
+      register: k8s_nodes
+      changed_when: false
+      
+    - name: Display cluster nodes
+      debug:
+        msg: "Kubernetes nodes: {{ k8s_nodes.stdout_lines }}"
+        
+    - name: Check if microservices namespace exists
+      command: kubectl get namespace {{ namespace }}
+      register: namespace_check
+      ignore_errors: yes
+      changed_when: false
+      
+    - name: Display namespace status
+      debug:
+        msg: "Namespace '{{ namespace }}' exists: {{ namespace_check.rc == 0 }}"
+        
+    - name: List current deployments in namespace
+      command: kubectl get deployments -n {{ namespace }}
+      register: current_deployments
+      changed_when: false
+      
+    - name: Display current deployments
+      debug:
+        msg: "Current deployments: {{ current_deployments.stdout }}"

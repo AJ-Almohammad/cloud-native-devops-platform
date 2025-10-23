@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cron-scheduler
+  namespace: multi-everything
+  labels:
+    app: cron-scheduler
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cron-scheduler
+  template:
+    metadata:
+      labels:
+        app: cron-scheduler
+        version: v1
+    spec:
+      containers:
+      - name: cron-scheduler
+        #image: multi-everything/cron-scheduler:latest
+        image: ajadocker/cron-scheduler:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 60
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        volumeMounts:
+        - name: cron-logs
+          mountPath: /var/log
+      volumes:
+      - name: cron-logs
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cron-scheduler
+  namespace: multi-everything
+spec:
+  selector:
+    app: cron-scheduler
+  ports:
+  - port: 8000
+    targetPort: 8000
+  type: ClusterIP
