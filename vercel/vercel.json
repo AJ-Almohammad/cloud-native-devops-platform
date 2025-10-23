@@ -1,0 +1,16 @@
+{
+  "routes": [
+    {
+      "src": "/demo",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/portfolio", 
+      "dest": "/portfolio-dashboard.html"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
+    }
+  ]
+}
