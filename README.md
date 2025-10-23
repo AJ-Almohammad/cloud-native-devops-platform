@@ -12,21 +12,18 @@
 
 ## 🌐 Live Demos & Dashboards
 
-> **💡 How to Access**: After cloning the repository, simply **double-click** the HTML files to open them in your browser, or use the commands below.
+> **💡 Click the links below to open dashboards in your browser** (works after cloning the repository)
 
 ### 🎯 Interactive Demo Dashboard
 **Enhanced DevOps Dashboard with Retry Functionality**
 
-**📂 File**: `Demo-of-Actual-Dashboard.html`
+<a href="file:///Demo-of-Actual-Dashboard.html" target="_blank">🚀 **Open Demo Dashboard**</a> | [View on GitHub](Demo-of-Actual-Dashboard.html)
 
+**Alternative ways to open**:
 ```bash
-# macOS/Linux - Open in default browser
-open Demo-of-Actual-Dashboard.html
-
-# Windows
-start Demo-of-Actual-Dashboard.html
-
-# Or simply double-click the file in your file explorer
+# From project root directory:
+open Demo-of-Actual-Dashboard.html        # macOS/Linux
+start Demo-of-Actual-Dashboard.html       # Windows
 ```
 
 **Features**:
@@ -41,16 +38,13 @@ start Demo-of-Actual-Dashboard.html
 ### 🎨 Portfolio Dashboard
 **Complete Project Overview & Architecture**
 
-**📂 File**: `portfolio-dashboard.html`
+<a href="file:///portfolio-dashboard.html" target="_blank">🎨 **Open Portfolio Dashboard**</a> | [View on GitHub](portfolio-dashboard.html)
 
+**Alternative ways to open**:
 ```bash
-# macOS/Linux - Open in default browser
-open portfolio-dashboard.html
-
-# Windows
-start portfolio-dashboard.html
-
-# Or simply double-click the file in your file explorer
+# From project root directory:
+open portfolio-dashboard.html             # macOS/Linux
+start portfolio-dashboard.html            # Windows
 ```
 
 **Features**:
@@ -64,15 +58,17 @@ start portfolio-dashboard.html
 ### 📊 Local Services Dashboard
 **Real-time Microservices Monitoring**
 
-**📂 File**: `local-dashboard.html`
+<a href="file:///local-dashboard.html" target="_blank">📊 **Open Local Dashboard**</a> | [View on GitHub](local-dashboard.html)
 
+**Alternative ways to open**:
 ```bash
-# Option 1: Open directly
-open local-dashboard.html
+# Option 1: Direct open
+open local-dashboard.html                 # macOS/Linux
+start local-dashboard.html                # Windows
 
-# Option 2: Run with server (recommended for live monitoring)
+# Option 2: With server (for live monitoring)
 node local-server.js
-# Then open: http://localhost:8085
+# Then navigate to: http://localhost:8085
 ```
 
 **Features**:
@@ -86,13 +82,16 @@ node local-server.js
 ### 🔧 Advanced Monitoring Dashboard
 **Enhanced Monitoring with CORS Proxy**
 
-**📂 File**: `monitoring/dashboard-with-proxy.html`
+**Requires**: Proxy server running first
 
+**Start Instructions**:
 ```bash
-# Start proxy server first
+# 1. Start the proxy server
 node proxy-server.js
 
-# Then open in browser: http://localhost:3000/dashboard-with-proxy.html
+# 2. Open in browser:
+open http://localhost:3000/dashboard-with-proxy.html
+# Or navigate to: http://localhost:3000/dashboard-with-proxy.html
 ```
 
 **Features**:
@@ -100,6 +99,14 @@ node proxy-server.js
 - 📊 Advanced metrics display
 - 🌐 External access support
 - 🔒 Secure communication
+
+---
+
+### 📝 Note for Viewers
+
+- **Local Access**: The HTML file links above work when viewing this README locally in your cloned repository
+- **GitHub.com**: When viewing on GitHub.com, use the "View on GitHub" links to see the source code
+- **Best Experience**: Clone the repository and double-click the HTML files or use the terminal commands provided
 
 ---
 
