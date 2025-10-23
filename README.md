@@ -12,19 +12,20 @@
 
 ## 🌐 Live Demos & Dashboards
 
-### 📊 Local Services Dashboard
-**Real-time Microservices Monitoring**  
-🔗 **[Open Dashboard](http://localhost:8085)** *(Start server: `node local-server.js`)*
+### 🎯 Interactive Demo Dashboard
+**Enhanced DevOps Dashboard with Retry Functionality**  
+🔗 **[Open Demo Dashboard](./Demo-of-Actual-Dashboard.html)** *(Direct HTML file - no server required)*
 
-Monitor all 5 microservices with:
-- ✅ Real-time health checks
-- 📈 Response time tracking
-- 🎯 Visual status indicators
-- 🔄 Auto-refresh every 30 seconds
+Features:
+- 🚀 **Demo Mode**: All services start as "down" for realistic demonstration
+- 🔄 **Retry Functionality**: Click "Retry" buttons to simulate service recovery
+- 📊 **Live Charts**: Interactive charts that populate when services are healthy
+- ℹ️ **Service Info**: Click "Open" for detailed service information and ports
+- 🎨 **Modern UI**: Beautiful gradient design with smooth animations
 
 ### 🎨 Portfolio Dashboard
 **Complete Project Overview & Architecture**  
-🔗 **[Open Portfolio](http://localhost:8080/portfolio-dashboard.html)** *(Serve: `python3 -m http.server 8080`)*
+🔗 **[Open Portfolio Dashboard](./portfolio-dashboard.html)** *(Direct HTML file - no server required)*
 
 Features:
 - 🏗 Architecture visualization
@@ -32,9 +33,19 @@ Features:
 - 🔧 Interactive demonstrations
 - 📸 Project screenshots
 
+### 📊 Local Services Dashboard
+**Real-time Microservices Monitoring**  
+🔗 **[Open Local Dashboard](./local-dashboard.html)** *(Direct HTML file - no server required)*
+
+Monitor all 5 microservices with:
+- ✅ Real-time health checks
+- 📈 Response time tracking
+- 🎯 Visual status indicators
+- 🔄 Auto-refresh every 30 seconds
+
 ### 🔧 Advanced Monitoring Dashboard
 **Enhanced Monitoring with CORS Proxy**  
-🔗 **[Open Monitoring Dashboard](http://localhost:3000/dashboard-with-proxy.html)** *(Start: `node proxy-server.js`)*
+🔗 **[Open Monitoring Dashboard](./monitoring/dashboard-with-proxy.html)** *(Start: `node proxy-server.js`)*
 
 Capabilities:
 - 🚀 CORS-enabled health checks
@@ -88,24 +99,18 @@ git clone https://github.com/AJ-Almohammad/cloud-native-devops-platform.git
 cd cloud-native-devops-platform
 ```
 
-#### 2️⃣ Start Dashboard Servers
+#### 2️⃣ Start Dashboard Servers (Optional - for enhanced features)
 
-**Terminal 1 - Local Services Dashboard:**
-```bash
-node local-server.js
-# Access at: http://localhost:8085
-```
-
-**Terminal 2 - Proxy Monitoring Dashboard:**
+**Terminal 1 - Proxy Monitoring Dashboard:**
 ```bash
 node proxy-server.js
 # Access at: http://localhost:3000/dashboard-with-proxy.html
 ```
 
-**Terminal 3 - Portfolio Dashboard:**
+**Terminal 2 - Local Services Dashboard:**
 ```bash
-python3 -m http.server 8080
-# Access at: http://localhost:8080/portfolio-dashboard.html
+node local-server.js
+# Access at: http://localhost:8085
 ```
 
 #### 3️⃣ Deploy Microservices to Kubernetes
@@ -131,13 +136,16 @@ Run these commands in **separate terminals** for full dashboard functionality:
 kubectl port-forward -n multi-everything service/analytics-service 3000:3000
 
 # Terminal 2 - User Service
-kubectl port-forward -n multi-everything service/user-service 8000:8000
+kubectl port-forward -n multi-everything service/user-service 8002:8000
 
 # Terminal 3 - Notification Service
-kubectl port-forward -n multi-everything service/notification-service 8080:8080
+kubectl port-forward -n multi-everything service/notification-service 8081:8080
 
 # Terminal 4 - Cron Scheduler
-kubectl port-forward -n multi-everything service/cron-scheduler 8001:8000
+kubectl port-forward -n multi-everything service/cron-scheduler 8003:8000
+
+# Terminal 5 - Content API
+kubectl port-forward -n multi-everything service/content-api 8082:80
 ```
 
 #### 5️⃣ Verify Services
@@ -145,9 +153,10 @@ kubectl port-forward -n multi-everything service/cron-scheduler 8001:8000
 ```bash
 # Check all services are healthy
 curl http://localhost:3000/health  # Analytics
-curl http://localhost:8000/health  # User Service
-curl http://localhost:8080/health  # Notification
-curl http://localhost:8001/health  # Cron Scheduler
+curl http://localhost:8002/health  # User Service
+curl http://localhost:8081/health  # Notification
+curl http://localhost:8003/health  # Cron Scheduler
+curl http://localhost:8082/health  # Content API
 ```
 
 ---
@@ -159,11 +168,11 @@ curl http://localhost:8001/health  # Cron Scheduler
 ```
 📦 Cloud Native DevOps Platform
 │
-├── 📝 Content API          → PHP/Slim Framework    → Port 80
-├── 👤 User Service         → Python/FastAPI        → Port 8000
+├── 📝 Content API          → PHP/Slim Framework    → Port 8082
+├── 👤 User Service         → Python/FastAPI        → Port 8002
 ├── 📊 Analytics Service    → Node.js/Express       → Port 3000
-├── 🔔 Notification Service → Go/Gin Framework      → Port 8080
-└── ⏰ Cron Scheduler        → Python/Celery         → Port 8000
+├── 🔔 Notification Service → Go/Gin Framework      → Port 8081
+└── ⏰ Cron Scheduler        → Python/Celery         → Port 8003
 ```
 
 ### Infrastructure Stack
@@ -196,6 +205,7 @@ curl http://localhost:8001/health  # Cron Scheduler
 cloud-native-devops-platform/
 │
 ├── 📄 README.md                          ← You are here
+├── 📄 Demo-of-Actual-Dashboard.html      ← Enhanced demo dashboard
 ├── 📄 local-dashboard.html               ← Main monitoring dashboard
 ├── 📄 portfolio-dashboard.html           ← Portfolio showcase
 ├── 📄 local-server.js                    ← Dashboard backend
@@ -289,8 +299,9 @@ cloud-native-devops-platform/
 
 | Dashboard | Purpose | File Location |
 |-----------|---------|---------------|
-| **Local Services** | Real-time service monitoring | [local-dashboard.html](./local-dashboard.html) |
+| **Demo Dashboard** | Enhanced demo with retry functionality | [Demo-of-Actual-Dashboard.html](./Demo-of-Actual-Dashboard.html) |
 | **Portfolio** | Project showcase and documentation | [portfolio-dashboard.html](./portfolio-dashboard.html) |
+| **Local Services** | Real-time service monitoring | [local-dashboard.html](./local-dashboard.html) |
 | **Proxy Monitor** | Advanced monitoring with CORS | [monitoring/dashboard-with-proxy.html](./monitoring/dashboard-with-proxy.html) |
 
 ### Configuration Files
@@ -310,11 +321,11 @@ cloud-native-devops-platform/
 
 | Service | Technology | Port | Health Check | Source Code |
 |---------|------------|------|--------------|-------------|
-| **Content API** | PHP/Slim | 80 | `/health` | [services/content-api/](./services/content-api/) |
-| **User Service** | Python/FastAPI | 8000 | `/health` | [services/user-service/](./services/user-service/) |
+| **Content API** | PHP/Slim | 8082 | `/health` | [services/content-api/](./services/content-api/) |
+| **User Service** | Python/FastAPI | 8002 | `/health` | [services/user-service/](./services/user-service/) |
 | **Analytics** | Node.js/Express | 3000 | `/health` | [services/analytics-service/](./services/analytics-service/) |
-| **Notification** | Go/Gin | 8080 | `/health` | [services/notification-service/](./services/notification-service/) |
-| **Cron Scheduler** | Python/Celery | 8000 | `/health` | [services/cron-scheduler/](./services/cron-scheduler/) |
+| **Notification** | Go/Gin | 8081 | `/health` | [services/notification-service/](./services/notification-service/) |
+| **Cron Scheduler** | Python/Celery | 8003 | `/health` | [services/cron-scheduler/](./services/cron-scheduler/) |
 
 ### Kubernetes Deployments
 
@@ -451,7 +462,18 @@ cd ci-cd/scripts
 
 ### Dashboard Overview
 
-#### 1. Local Services Dashboard
+#### 1. Demo Dashboard (Recommended)
+**Location**: [Demo-of-Actual-Dashboard.html](./Demo-of-Actual-Dashboard.html)  
+**Access**: Direct file access - no server required
+
+**Features**:
+- 🚀 **Demo Mode**: All services start as "down" for realistic demonstration
+- 🔄 **Retry Functionality**: Click "Retry" buttons to simulate service recovery
+- 📊 **Interactive Charts**: Live charts that populate when services are healthy
+- ℹ️ **Service Information**: Detailed modal popups with port information
+- 🎨 **Modern Design**: Beautiful gradient UI with smooth animations
+
+#### 2. Local Services Dashboard
 **Location**: [local-dashboard.html](./local-dashboard.html)  
 **Server**: [local-server.js](./local-server.js)  
 **Access**: http://localhost:8085
@@ -463,9 +485,9 @@ cd ci-cd/scripts
 - 🔄 Auto-refresh every 30 seconds
 - 🛠 Built-in service testing capabilities
 
-#### 2. Portfolio Dashboard
+#### 3. Portfolio Dashboard
 **Location**: [portfolio-dashboard.html](./portfolio-dashboard.html)  
-**Access**: http://localhost:8080/portfolio-dashboard.html
+**Access**: Direct file access - no server required
 
 **Features**:
 - 🏗 Complete architecture visualization
@@ -474,7 +496,7 @@ cd ci-cd/scripts
 - 📸 Interactive service demonstrations
 - 🎯 Professional project showcase
 
-#### 3. Proxy Monitoring Dashboard
+#### 4. Proxy Monitoring Dashboard
 **Location**: [monitoring/dashboard-with-proxy.html](./monitoring/dashboard-with-proxy.html)  
 **Server**: [proxy-server.js](./proxy-server.js) or [monitoring/proxy-server.js](./monitoring/proxy-server.js)  
 **Access**: http://localhost:3000/dashboard-with-proxy.html
@@ -611,13 +633,18 @@ We welcome contributions! Please follow these steps:
 
 ## 🚨 Important Notes
 
-### ⚠️ Required for Dashboard Functionality
+### ⚠️ Dashboard Access Options
 
-**Port Forwarding**: All microservices require active port-forwarding to be accessible by the dashboards. Without port-forwarding, the dashboards won't be able to connect to the services.
+**Direct Access (Recommended)**:
+- **Demo Dashboard**: [Demo-of-Actual-Dashboard.html](./Demo-of-Actual-Dashboard.html) - No server required
+- **Portfolio Dashboard**: [portfolio-dashboard.html](./portfolio-dashboard.html) - No server required
+- **Local Dashboard**: [local-dashboard.html](./local-dashboard.html) - No server required
 
-**Local Development**: This platform is optimized for Docker Desktop Kubernetes and local development. For cloud deployment, refer to the Terraform configurations.
+**Server-Based Access**:
+- **Local Services**: `node local-server.js` → http://localhost:8085
+- **Proxy Monitor**: `node proxy-server.js` → http://localhost:3000/dashboard-with-proxy.html
 
-**Enhanced Monitoring**: Custom dashboards replace traditional monitoring stacks (Prometheus/Grafana) for simplified setup and better demonstration purposes.
+**Port Forwarding**: For live service monitoring, active port-forwarding is required for the dashboards to connect to running services.
 
 ### 🔧 Server Requirements
 
@@ -625,7 +652,6 @@ We welcome contributions! Please follow these steps:
 |-----------|------------|---------|------|
 | Local Services | [local-server.js](./local-server.js) | `node local-server.js` | 8085 |
 | Proxy Monitor | [proxy-server.js](./proxy-server.js) | `node proxy-server.js` | 3000 |
-| Portfolio | Python HTTP Server | `python3 -m http.server 8080` | 8080 |
 
 ---
 
