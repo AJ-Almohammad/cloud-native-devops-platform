@@ -12,19 +12,12 @@
 
 ## 🌐 Live Demos & Dashboards
 
-> **💡 Click the links below to open dashboards in your browser** (works after cloning the repository)
+> **🚀 Click the links below to view live dashboards** - Hosted on Vercel for instant access!
 
 ### 🎯 Interactive Demo Dashboard
 **Enhanced DevOps Dashboard with Retry Functionality**
 
-<a href="file:///Demo-of-Actual-Dashboard.html" target="_blank">🚀 **Open Demo Dashboard**</a> | [View on GitHub](Demo-of-Actual-Dashboard.html)
-
-**Alternative ways to open**:
-```bash
-# From project root directory:
-open Demo-of-Actual-Dashboard.html        # macOS/Linux
-start Demo-of-Actual-Dashboard.html       # Windows
-```
+🔗 **[Open Live Demo Dashboard](https://vercel-13n0k2ehd-ajalmohammads-projects.vercel.app/)** ⚡ *Hosted on Vercel*
 
 **Features**:
 - 🚀 **Demo Mode**: All services start as "down" for realistic demonstration
@@ -33,19 +26,19 @@ start Demo-of-Actual-Dashboard.html       # Windows
 - ℹ️ **Service Info**: Click "Open" for detailed service information and ports
 - 🎨 **Modern UI**: Beautiful gradient design with smooth animations
 
+**Local Access**:
+```bash
+# Run locally from project root:
+open Demo-of-Actual-Dashboard.html        # macOS/Linux
+start Demo-of-Actual-Dashboard.html       # Windows
+```
+
 ---
 
 ### 🎨 Portfolio Dashboard
 **Complete Project Overview & Architecture**
 
-<a href="file:///portfolio-dashboard.html" target="_blank">🎨 **Open Portfolio Dashboard**</a> | [View on GitHub](portfolio-dashboard.html)
-
-**Alternative ways to open**:
-```bash
-# From project root directory:
-open portfolio-dashboard.html             # macOS/Linux
-start portfolio-dashboard.html            # Windows
-```
+🔗 **[Open Live Portfolio Dashboard](https://vercel-13n0k2ehd-ajalmohammads-projects.vercel.app/portfolio)** ⚡ *Hosted on Vercel*
 
 **Features**:
 - 🏗 Architecture visualization
@@ -53,14 +46,21 @@ start portfolio-dashboard.html            # Windows
 - 🔧 Interactive demonstrations
 - 📸 Project screenshots
 
+**Local Access**:
+```bash
+# Run locally from project root:
+open portfolio-dashboard.html             # macOS/Linux
+start portfolio-dashboard.html            # Windows
+```
+
 ---
 
 ### 📊 Local Services Dashboard
 **Real-time Microservices Monitoring**
 
-<a href="file:///local-dashboard.html" target="_blank">📊 **Open Local Dashboard**</a> | [View on GitHub](local-dashboard.html)
+**📂 File**: `local-dashboard.html` | [View Source](local-dashboard.html)
 
-**Alternative ways to open**:
+**Run Locally**:
 ```bash
 # Option 1: Direct open
 open local-dashboard.html                 # macOS/Linux
@@ -82,14 +82,14 @@ node local-server.js
 ### 🔧 Advanced Monitoring Dashboard
 **Enhanced Monitoring with CORS Proxy**
 
-**Requires**: Proxy server running first
+**📂 File**: `monitoring/dashboard-with-proxy.html` | [View Source](monitoring/dashboard-with-proxy.html)
 
-**Start Instructions**:
+**Run Locally**:
 ```bash
 # 1. Start the proxy server
 node proxy-server.js
 
-# 2. Open in browser:
+# 2. Open in browser
 open http://localhost:3000/dashboard-with-proxy.html
 # Or navigate to: http://localhost:3000/dashboard-with-proxy.html
 ```
@@ -99,14 +99,6 @@ open http://localhost:3000/dashboard-with-proxy.html
 - 📊 Advanced metrics display
 - 🌐 External access support
 - 🔒 Secure communication
-
----
-
-### 📝 Note for Viewers
-
-- **Local Access**: The HTML file links above work when viewing this README locally in your cloned repository
-- **GitHub.com**: When viewing on GitHub.com, use the "View on GitHub" links to see the source code
-- **Best Experience**: Clone the repository and double-click the HTML files or use the terminal commands provided
 
 ---
 
