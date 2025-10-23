@@ -12,42 +12,90 @@
 
 ## 🌐 Live Demos & Dashboards
 
-### 🎯 Interactive Demo Dashboard
-**Enhanced DevOps Dashboard with Retry Functionality**  
-🔗 [**Open Demo Dashboard**](Demo-of-Actual-Dashboard.html) *(Click to open in browser)*
+> **💡 How to Access**: After cloning the repository, simply **double-click** the HTML files to open them in your browser, or use the commands below.
 
-Features:
+### 🎯 Interactive Demo Dashboard
+**Enhanced DevOps Dashboard with Retry Functionality**
+
+**📂 File**: `Demo-of-Actual-Dashboard.html`
+
+```bash
+# macOS/Linux - Open in default browser
+open Demo-of-Actual-Dashboard.html
+
+# Windows
+start Demo-of-Actual-Dashboard.html
+
+# Or simply double-click the file in your file explorer
+```
+
+**Features**:
 - 🚀 **Demo Mode**: All services start as "down" for realistic demonstration
 - 🔄 **Retry Functionality**: Click "Retry" buttons to simulate service recovery
 - 📊 **Live Charts**: Interactive charts that populate when services are healthy
 - ℹ️ **Service Info**: Click "Open" for detailed service information and ports
 - 🎨 **Modern UI**: Beautiful gradient design with smooth animations
 
-### 🎨 Portfolio Dashboard
-**Complete Project Overview & Architecture**  
-🔗 [**Open Portfolio Dashboard**](portfolio-dashboard.html) *(Click to open in browser)*
+---
 
-Features:
+### 🎨 Portfolio Dashboard
+**Complete Project Overview & Architecture**
+
+**📂 File**: `portfolio-dashboard.html`
+
+```bash
+# macOS/Linux - Open in default browser
+open portfolio-dashboard.html
+
+# Windows
+start portfolio-dashboard.html
+
+# Or simply double-click the file in your file explorer
+```
+
+**Features**:
 - 🏗 Architecture visualization
 - 📋 Technology stack showcase
 - 🔧 Interactive demonstrations
 - 📸 Project screenshots
 
-### 📊 Local Services Dashboard
-**Real-time Microservices Monitoring**  
-🔗 [**Open Local Dashboard**](local-dashboard.html) *(Click to open in browser)*
+---
 
-Monitor all 5 microservices with:
+### 📊 Local Services Dashboard
+**Real-time Microservices Monitoring**
+
+**📂 File**: `local-dashboard.html`
+
+```bash
+# Option 1: Open directly
+open local-dashboard.html
+
+# Option 2: Run with server (recommended for live monitoring)
+node local-server.js
+# Then open: http://localhost:8085
+```
+
+**Features**:
 - ✅ Real-time health checks
 - 📈 Response time tracking
 - 🎯 Visual status indicators
 - 🔄 Auto-refresh every 30 seconds
 
-### 🔧 Advanced Monitoring Dashboard
-**Enhanced Monitoring with CORS Proxy**  
-🔗 [**Open Monitoring Dashboard**](monitoring/dashboard-with-proxy.html) *(Start: `node proxy-server.js`)*
+---
 
-Capabilities:
+### 🔧 Advanced Monitoring Dashboard
+**Enhanced Monitoring with CORS Proxy**
+
+**📂 File**: `monitoring/dashboard-with-proxy.html`
+
+```bash
+# Start proxy server first
+node proxy-server.js
+
+# Then open in browser: http://localhost:3000/dashboard-with-proxy.html
+```
+
+**Features**:
 - 🚀 CORS-enabled health checks
 - 📊 Advanced metrics display
 - 🌐 External access support
