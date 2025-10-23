@@ -12,82 +12,42 @@
 
 ## 🌐 Live Demos & Dashboards
 
-> **💡 Quick Access**: Simply double-click the HTML files below to open them in your default browser!
-
 ### 🎯 Interactive Demo Dashboard
-**Enhanced DevOps Dashboard with Retry Functionality**
+**Enhanced DevOps Dashboard with Retry Functionality**  
+🔗 [**Open Demo Dashboard**](Demo-of-Actual-Dashboard.html) *(Click to open in browser)*
 
-**📂 File**: `Demo-of-Actual-Dashboard.html`  
-**🚀 How to Open**: Double-click the file or run: `open Demo-of-Actual-Dashboard.html` (macOS) / `start Demo-of-Actual-Dashboard.html` (Windows)
-
-**Features**:
+Features:
 - 🚀 **Demo Mode**: All services start as "down" for realistic demonstration
 - 🔄 **Retry Functionality**: Click "Retry" buttons to simulate service recovery
 - 📊 **Live Charts**: Interactive charts that populate when services are healthy
 - ℹ️ **Service Info**: Click "Open" for detailed service information and ports
 - 🎨 **Modern UI**: Beautiful gradient design with smooth animations
 
-```bash
-# Open directly in browser (macOS)
-open Demo-of-Actual-Dashboard.html
-
-# Or (Windows)
-start Demo-of-Actual-Dashboard.html
-
-# Or (Linux)
-xdg-open Demo-of-Actual-Dashboard.html
-```
-
----
-
 ### 🎨 Portfolio Dashboard
-**Complete Project Overview & Architecture**
+**Complete Project Overview & Architecture**  
+🔗 [**Open Portfolio Dashboard**](portfolio-dashboard.html) *(Click to open in browser)*
 
-**📂 File**: `portfolio-dashboard.html`  
-**🚀 How to Open**: Double-click the file or run: `open portfolio-dashboard.html` (macOS) / `start portfolio-dashboard.html` (Windows)
-
-**Features**:
+Features:
 - 🏗 Architecture visualization
 - 📋 Technology stack showcase
 - 🔧 Interactive demonstrations
 - 📸 Project screenshots
 
-```bash
-# Open directly in browser (macOS)
-open portfolio-dashboard.html
+### 📊 Local Services Dashboard
+**Real-time Microservices Monitoring**  
+🔗 [**Open Local Dashboard**](local-dashboard.html) *(Click to open in browser)*
 
-# Or (Windows)
-start portfolio-dashboard.html
-
-# Or (Linux)
-xdg-open portfolio-dashboard.html
-```
-
----
-
-### 📊 Additional Dashboards
-
-#### Local Services Dashboard
-**Real-time Microservices Monitoring**
-
-**📂 File**: `local-dashboard.html`  
-**Option 1** (Standalone): Double-click to open  
-**Option 2** (With Server): `node local-server.js` → http://localhost:8085
-
-**Features**:
+Monitor all 5 microservices with:
 - ✅ Real-time health checks
 - 📈 Response time tracking
 - 🎯 Visual status indicators
 - 🔄 Auto-refresh every 30 seconds
 
-#### Advanced Monitoring Dashboard
-**Enhanced Monitoring with CORS Proxy**
+### 🔧 Advanced Monitoring Dashboard
+**Enhanced Monitoring with CORS Proxy**  
+🔗 [**Open Monitoring Dashboard**](monitoring/dashboard-with-proxy.html) *(Start: `node proxy-server.js`)*
 
-**📂 File**: `monitoring/dashboard-with-proxy.html`  
-**Requires**: Proxy server running (`node proxy-server.js`)  
-**Access**: http://localhost:3000/dashboard-with-proxy.html
-
-**Features**:
+Capabilities:
 - 🚀 CORS-enabled health checks
 - 📊 Advanced metrics display
 - 🌐 External access support
